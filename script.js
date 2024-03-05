@@ -7,7 +7,7 @@ function sumRange(number, total = 0) {
     }
     return sumRange(number - 1, total);
 }
-console.log(sumRange(10));
+// console.log(sumRange(10));
 
 
 // Question 2
@@ -20,7 +20,7 @@ function power(base, exponent) {
     }
     return base * power(base, exponent - 1);
 }
-console.log(power(4, 3));
+// console.log(power(4, 3));
 
 
 // Question 3
@@ -31,7 +31,7 @@ function factorial(number) {
     }
     return number * factorial(number - 1);
 }
-console.log(factorial(5));
+// console.log(factorial(5));
 
 
 // Question 4
@@ -50,9 +50,9 @@ function all(array, callback) {
 
     return false;
 }
-console.log(all([1, 2, 6], function (num) {
-    return num < 7;
-}));
+// console.log(all([1, 2, 6], function (num) {
+//     return num < 7;
+// }));
 
 
 // Question 5
@@ -69,11 +69,44 @@ function productOfArray(array, total = 0) {
     total *= array.shift();
     return productOfArray(array, total);
 }
-console.log(productOfArray([1, 2, 3, 10]));
+// console.log(productOfArray([1, 2, 3, 10]));
 
 
 // Question 6
-//
+// return true if value found in nested object
+function contains(nestedObject, value) {
+    let key = Object.keys(nestedObject);
+
+    // scan thru object
+    for (let i = 0; i < key.length; i++) {
+        let objValue = nestedObject[key[i]];
+
+        if (objValue === value) {
+            return true;
+        }
+
+        if (typeof objValue === 'object') {
+            return contains(objValue, value);
+        }
+    }
+
+    return false;
+}
+let nestedObject = {
+    data: {
+        info: {
+            stuff: {
+                thing: {
+                    moreStuff: {
+                        something: 'foo2',
+                        magicNumber: 44,
+                    }
+                }
+            }
+        }
+    }
+}
+// console.log(contains(nestedObject, 44));
 
 
 // Question 7
