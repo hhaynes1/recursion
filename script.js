@@ -110,7 +110,20 @@ let nestedObject = {
 
 
 // Question 7
-//
+// return total number of integers stored in multi-dimensional array
+function totalIntegers(array, total = 0) {
+    for (let i = 0; i < array.length; i++) {
+        if (Number.isInteger(array[i])) {
+            total += 1;
+        }
+
+        if (typeof array[i] === 'object') {
+            total = totalIntegers(array[i], total);
+        }
+    }
+    return total;
+}
+// console.log(totalIntegers([[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]])); // 7
 
 
 // Question 8
