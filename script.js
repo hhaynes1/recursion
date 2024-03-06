@@ -1,3 +1,6 @@
+// Odin Project Recursive Methods lesson
+// https://www.codingame.com/playgrounds/5422/js-interview-prep-recursion
+
 // Question 1
 // return sum from 1 to number
 function sumRange(number, total = 0) {
@@ -127,7 +130,21 @@ function totalIntegers(array, total = 0) {
 
 
 // Question 8
-//
+// sums squares of numbers in list that may contain more lists
+function sumSquares(array, total = 0) {
+    for (let i = 0; i < array.length; i++) {
+        if (Number.isInteger(array[i])) {
+            total += power(array[i], 2);
+        }
+
+        if (typeof array[i] === 'object') {
+            total = sumSquares(array[i], total);
+        }
+    }
+    return total;
+}
+// console.log(sumSquares([[1, 2], 3])); // 1 + 4 + 9 = 14
+// console.log(sumSquares([10, [[10], 10], [10]])); // 100 + 100 + 100 + 100 = 400
 
 
 // Question 9
