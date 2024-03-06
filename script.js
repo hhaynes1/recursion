@@ -148,4 +148,13 @@ function sumSquares(array, total = 0) {
 
 
 // Question 9
-//
+// return array containing repetitions of number argument
+function replicate(reps, number, result = []) {
+    if (reps === 0) {
+        return result;
+    }
+
+    result.push(number);
+    return replicate(reps - 1, number, result);
+}
+// console.log(replicate(3, 5)); // [5, 5, 5];
