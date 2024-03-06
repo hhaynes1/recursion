@@ -158,3 +158,47 @@ function replicate(reps, number, result = []) {
     return replicate(reps - 1, number, result);
 }
 // console.log(replicate(3, 5)); // [5, 5, 5];
+
+
+// Odin project, 'Project: Recursion' warmup
+// Fibonacci sequence, function returns array with n digits of sequence
+function fibs(n) {
+    let array = [];
+
+    if (n === 0) {
+        return array;
+    }
+
+    if (n >= 1) {
+        array.push(0);
+    }
+
+    if (n >= 2) {
+        array.push(1);
+    }
+
+    if (n > 2) {
+        for (let i = 2; i < n; i++) {
+            array[i] = array[i - 1] + array[i - 2];
+        }
+    }
+
+    return array;
+}
+// console.log(fibs(8)); // [0, 1, 1, 2, 3, 5, 8, 13]
+
+// solved recursively
+function fibsRec(n, array = []) {
+    if (n <= 0) {
+        return array;
+    } else if (array.length === 0) {
+        array.push(0);
+    } else if (array.length === 1) {
+        array.push(1);
+    } else if (array.length >= 2) {
+        array.push(array[array.length - 1] + array[array.length - 2]);
+    }
+
+    return fibsRec(n - 1, array);
+}
+// console.log(fibsRec(8)); // [0, 1, 1, 2, 3, 5, 8, 13]
