@@ -160,7 +160,7 @@ function replicate(reps, number, result = []) {
 // console.log(replicate(3, 5)); // [5, 5, 5];
 
 
-// Odin project, 'Project: Recursion' warmup
+// Odin project, 'Project: Recursion' assignment 1
 // Fibonacci sequence, function returns array with n digits of sequence
 function fibs(n) {
     let array = [];
@@ -202,3 +202,40 @@ function fibsRec(n, array = []) {
     return fibsRec(n - 1, array);
 }
 // console.log(fibsRec(8)); // [0, 1, 1, 2, 3, 5, 8, 13]
+
+
+// Odin project, 'Project: Recursion' assignment 2
+// merge sort list of given integers, return sorted array
+function mergeSort(array, newArray = []) {
+    let leftHalf = array.slice(0, Math.round(array.length / 2));
+    let rightHalf = array.slice(Math.round(array.length / 2), array.length);
+
+    if (leftHalf.length !== 1) {
+        leftHalf = mergeSort(leftHalf);
+    }
+
+    if (rightHalf.length !== 1) {
+        rightHalf = mergeSort(rightHalf);
+    }
+
+    while (leftHalf.length && rightHalf.length) {
+        if (leftHalf[0] <= rightHalf[0]) {
+            newArray.push(leftHalf.shift());
+        } else {
+            newArray.push(rightHalf.shift());
+        }
+    }
+
+    while (leftHalf[0]) {
+        newArray.push(leftHalf.shift());
+    }
+
+    while (rightHalf[0]) {
+        newArray.push(rightHalf.shift());
+    }
+
+    return newArray;
+}
+// console.log(mergeSort([3, 2, 1, 13, 8, 5, 0, 1])); // [0, 1, 1, 2, 3, 5, 8, 13]
+// console.log(mergeSort([105, 79, 100, 110])); // [79, 100, 105, 110]
+// console.log(mergeSort([105, 79, 100, 110, 3, 2, 1, 13, 8, 5, 0, 2, 1, 4, 3]));
